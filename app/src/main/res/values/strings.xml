@@ -2,4 +2,7 @@
     <string name="app_name">CountryNews</string>
     <string name="loading">Downloading News Feeds</string>
     <string name="buttonOk">Ok</string>
+    <string name="nodesc">No Feed Description Available</string>
+    <string name="noInternet">No data connectivity detected.Kindly enable the same and check again.</string>
+    <string name="nullelement">Something went wrong.No data returned from endpoint.</string>
 </resources>

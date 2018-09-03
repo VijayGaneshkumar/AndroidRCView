@@ -15,6 +15,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 
 import com.vijay.countrynews.Model.ApiResponse;
@@ -54,6 +56,9 @@ public class MainActivity extends AppCompatActivity  {
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
 
+    @BindView(R.id.progressBar)
+    ProgressBar mProgressBar;
+
     static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
@@ -67,14 +72,20 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initializeView();
-        requestNewsItems(MainActivity.this);
+        if(AppUtils.hasDataConnectivity(this)) {
+            requestNewsItems(MainActivity.this);
+        }
+        else {
+            hideProgress();
+            displayErrorNotification(getString(R.string.noInternet));
+        }
 
     }
 
     private void setupProgressDialog()
     {
         mProgressDialog = new ProgressDialog(this);
-        mProgressDialog.setCancelable(false);
+        mProgressDialog.setCancelable(true);
         mProgressDialog.setMessage(getString(R.string.loading));
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mProgressDialog.setProgress(0);
@@ -100,15 +111,16 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     public void displayErrorNotification(String errorMessage) {
-            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-            alertDialog.setMessage(errorMessage)
-                    .setNeutralButton(R.string.buttonOk, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    });
-            alertDialog.show();
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setMessage(errorMessage)
+                .setNeutralButton(R.string.buttonOk, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mProgressBar.setVisibility(View.GONE);
+                        dialogInterface.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 
 
@@ -123,6 +135,7 @@ public class MainActivity extends AppCompatActivity  {
                 public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                     if(response.isSuccessful()) {
                         mSwipeRefreshLayout.setRefreshing(false);
+                        mProgressBar.setVisibility(View.GONE);
                         hideProgress();
                         Log.d(TAG, "jSON Response :" + response.body().getPageTitle().toString());
                         Log.d(TAG, "jSOn Data :" + response.body().getNewsFeeds().size());
@@ -138,16 +151,17 @@ public class MainActivity extends AppCompatActivity  {
             });
         }
         else {
-            // No Network Connectivity show an alert to user
+            displayErrorNotification(getString(R.string.noInternet));
         }
 
     }
 
     public void displayNewsItems(ApiResponse newsItems) {
         List<NewsItems> newsItemList = new ArrayList();;
-        if(newsItems ==null)
+        if(newsItems == null)
         {
-            //display some text;
+            Toast.makeText(MainActivity.this, getString(R.string.nullelement), Toast.LENGTH_LONG).show();
+            return;
         }
         String newsPageTitle = newsItems.getPageTitle();
 
@@ -179,8 +193,16 @@ public class MainActivity extends AppCompatActivity  {
         public void onRefresh() {
             //Swipe refresh callback
             Log.d(TAG,"SwipeRefreshListener clicked");
-            mSwipeRefreshLayout.setRefreshing(true);
-            requestNewsItems(MainActivity.this);
+            if(AppUtils.hasDataConnectivity(MainActivity.this)) {
+
+                mSwipeRefreshLayout.setRefreshing(true);
+                requestNewsItems(MainActivity.this);
+            }
+            else
+            {
+                mSwipeRefreshLayout.setRefreshing(false);
+                displayErrorNotification(getString(R.string.noInternet));
+            }
         }
     };
 
@@ -191,8 +213,14 @@ public class MainActivity extends AppCompatActivity  {
 
             //floating button refresh callback
             Log.d(TAG,"fabRefreshListener clicked");
-            showProgress();
-            requestNewsItems(MainActivity.this);
+            if(AppUtils.hasDataConnectivity(MainActivity.this)) {
+                showProgress();
+                requestNewsItems(MainActivity.this);
+            }
+            else
+            {
+                displayErrorNotification(getString(R.string.noInternet));
+            }
         }
 
     };
