@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CountryNews</string>
+    <string name="loading">Downloading News Feeds</string>
+    <string name="buttonOk">Ok</string>
+</resources>
