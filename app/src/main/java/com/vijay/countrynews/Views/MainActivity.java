@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -21,11 +19,11 @@ import android.widget.Toast;
 
 import com.vijay.countrynews.Model.ApiResponse;
 import com.vijay.countrynews.Model.NewsItems;
-import com.vijay.countrynews.Network.IRetrofitApiService;
-import com.vijay.countrynews.Network.RetrofitApiClient;
+import com.vijay.countrynews.NetworkService.IRetrofitApiService;
+import com.vijay.countrynews.NetworkService.RetrofitApiClient;
 import com.vijay.countrynews.R;
 import com.vijay.countrynews.Utils.AppUtils;
-import com.vijay.countrynews.Adapter.NewsItemAdapter;
+import com.vijay.countrynews.Views.ItemAdapter.NewsItemAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

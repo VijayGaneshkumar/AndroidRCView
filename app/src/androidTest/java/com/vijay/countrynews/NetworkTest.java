@@ -6,9 +6,8 @@ import android.support.test.rule.ActivityTestRule;
 
 
 import com.vijay.countrynews.Model.ApiResponse;
-import com.vijay.countrynews.Network.IRetrofitApiService;
-import com.vijay.countrynews.Network.RetrofitApiClient;
-import com.vijay.countrynews.Utils.AppConstants;
+import com.vijay.countrynews.NetworkService.IRetrofitApiService;
+import com.vijay.countrynews.NetworkService.RetrofitApiClient;
 import com.vijay.countrynews.Views.MainActivity;
 
 import org.junit.Before;
@@ -53,7 +52,7 @@ public class NetworkTest {
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        assertEquals("Response is successful!", "200", response.code());
+                        assertEquals("Response is successful!",response.code() == 200);
                     }
                 } else {
                     assertTrue("Error in Response", response.code() > 200);

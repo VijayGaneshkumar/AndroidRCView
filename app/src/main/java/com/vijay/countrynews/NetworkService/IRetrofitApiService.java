@@ -1,4 +1,4 @@
-package com.vijay.countrynews.Network;
+package com.vijay.countrynews.NetworkService;
 
 import com.vijay.countrynews.Model.ApiResponse;
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="cardview_margin">8dp</dimen>
+    <dimen name="cardview_cornerradius">6dp</dimen>
+    <dimen name="cardview_elevation">10dp</dimen>
+
+    <dimen name="rl_padding">10dp</dimen>
+    <dimen name="newsItemTitle_textsize">25sp</dimen>
+    <dimen name="newsItemTitle_paddingleft">10dp</dimen>
+    <dimen name="newsItemDesc_paddingleft">5dp</dimen>
+    <dimen name="newsItemDesc_textsize">15sp</dimen>
+
+    <dimen name="newsItemPhoto_height">100dp</dimen>
+    <dimen name="newsItemPhoto_width">80dp</dimen>
+
+
+</resources>

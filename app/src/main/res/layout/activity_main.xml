@@ -21,7 +21,7 @@
         android:layout_gravity="bottom|left"
         android:backgroundTint="@color/cardview_light_background"
         android:src="@drawable/fabicon"
-        android:layout_margin="16dp" />
+        android:layout_margin="@dimen/fab_margin" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
