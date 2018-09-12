@@ -63,29 +63,23 @@ public class NewsItemAdapter extends  RecyclerView.Adapter<NewsItemAdapter.NewsI
 
     @Override
     public void onBindViewHolder(NewsItemAdapter.NewsItemViewHolder holder, int position) {
-        NewsItemAdapter.NewsItemViewHolder mViewHolder = (NewsItemAdapter.NewsItemViewHolder)holder;
+        NewsItemAdapter.NewsItemViewHolder mViewHolder = (NewsItemAdapter.NewsItemViewHolder) holder;
         NewsItems newsItems = dataList.get(position);
         String title = newsItems.getRowTitle();
         String description = newsItems.getRowDescription();
         String imageUrl = getImageUrl(newsItems);
 
-        if(title == null && description == null && imageUrl == null)
+        if (title == null && description == null && imageUrl == null)
             return;
 
-        if(title!= null)
-            mViewHolder.newsTitle.setText(title);
-        if(description!= null)
+        mViewHolder.newsTitle.setText(title);
+        if(description!=null)
             mViewHolder.newsDesc.setText(description);
-        if(imageUrl != null) {
-            Picasso.get()
-                    .load(imageUrl)
-                    //.error(R.drawable.blankimage)
-                    //.placeholder(R.drawable.blankimage)
-                    .into(mViewHolder.newsPhoto);
-        }
-        else {
-            mViewHolder.newsPhoto.setVisibility(View.INVISIBLE);
-        }
+        Picasso.get()
+                .load(imageUrl)
+                .error(R.drawable.noimage)
+                .placeholder(R.drawable.noimage)
+                .into(mViewHolder.newsPhoto);
     }
     public class NewsItemViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.newsItemTitle)

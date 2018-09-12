@@ -17,7 +17,7 @@
             android:id="@+id/newsItemTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/newsItemTitle_textsize"
+            android:paddingLeft="@dimen/newsItemTitle_paddingleft"
             android:textAlignment="textStart"
             android:textStyle="bold"
             android:textSize="@dimen/newsItemTitle_textsize" />
@@ -29,7 +29,7 @@
             android:layout_below="@id/newsItemTitle"
             android:layout_toLeftOf="@id/newsItemPhoto"
             android:layout_toStartOf="@id/newsItemPhoto"
-            android:paddingLeft="@dimen/newsItemDesc_textsize"
+            android:paddingLeft="@dimen/newsItemDesc_paddingleft"
             android:text="@string/nodesc"
             android:textSize="@dimen/newsItemDesc_textsize" />
 

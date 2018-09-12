@@ -7,8 +7,8 @@
     <dimen name="cardview_elevation">10dp</dimen>
 
     <dimen name="rl_padding">10dp</dimen>
-    <dimen name="newsItemTitle_textsize">25sp</dimen>
-    <dimen name="newsItemTitle_paddingleft">10dp</dimen>
+    <dimen name="newsItemTitle_textsize">20sp</dimen>
+    <dimen name="newsItemTitle_paddingleft">5dp</dimen>
     <dimen name="newsItemDesc_paddingleft">5dp</dimen>
     <dimen name="newsItemDesc_textsize">15sp</dimen>
 
