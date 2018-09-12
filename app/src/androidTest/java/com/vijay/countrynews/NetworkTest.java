@@ -5,10 +5,10 @@ import android.support.test.runner.AndroidJUnit4;
 import android.support.test.rule.ActivityTestRule;
 
 
-import com.vijay.countrynews.Model.ApiResponse;
-import com.vijay.countrynews.NetworkService.IRetrofitApiService;
-import com.vijay.countrynews.NetworkService.RetrofitApiClient;
-import com.vijay.countrynews.Views.MainActivity;
+import com.vijay.countrynews.model.ApiResponse;
+import com.vijay.countrynews.networkservice.IRetrofitApiService;
+import com.vijay.countrynews.networkservice.RetrofitApiClient;
+import com.vijay.countrynews.views.MainActivity;
 
 import org.junit.Before;
 import org.junit.Rule;

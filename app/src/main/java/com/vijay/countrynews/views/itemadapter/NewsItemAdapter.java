@@ -1,4 +1,4 @@
-package com.vijay.countrynews.Views.ItemAdapter;
+package com.vijay.countrynews.views.itemadapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.vijay.countrynews.Model.NewsItems;
+import com.vijay.countrynews.model.NewsItems;
 import com.vijay.countrynews.R;
 
 import java.util.ArrayList;
@@ -79,8 +79,8 @@ public class NewsItemAdapter extends  RecyclerView.Adapter<NewsItemAdapter.NewsI
         if(imageUrl != null) {
             Picasso.get()
                     .load(imageUrl)
-                    .error(R.drawable.blankimage)
-                    .placeholder(R.drawable.blankimage)
+                    //.error(R.drawable.blankimage)
+                    //.placeholder(R.drawable.blankimage)
                     .into(mViewHolder.newsPhoto);
         }
         else {

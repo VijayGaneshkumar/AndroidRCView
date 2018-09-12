@@ -1,6 +1,6 @@
-package com.vijay.countrynews.NetworkService;
+package com.vijay.countrynews.networkservice;
 
-import com.vijay.countrynews.Utils.AppConstants;
+import com.vijay.countrynews.utils.AppConstants;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

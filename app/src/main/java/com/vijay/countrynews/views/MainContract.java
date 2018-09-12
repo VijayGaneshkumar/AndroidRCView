@@ -1,9 +1,7 @@
-package com.vijay.countrynews.Views;
+package com.vijay.countrynews.views;
 
-import com.vijay.countrynews.Model.ApiResponse;
-import com.vijay.countrynews.Model.NewsItems;
+import com.vijay.countrynews.model.NewsItems;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,13 +15,14 @@ public interface MainContract {
 
     void hideProgress();
 
-    void displayNewsItems(ApiResponse newsItems);
+    void setDataToRecyclerView(List<NewsItems> newsItemList, String newsPageTitle);
 
     void displayErrorNotification(String errorMessage);
 
 
     interface  NewsItemInteractor {
         void getNewsItemFromUrl();
+
     }
 
 

@@ -1,14 +1,11 @@
-package com.vijay.countrynews.NetworkService;
+package com.vijay.countrynews.networkservice;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.View;
 
-import com.vijay.countrynews.Model.ApiResponse;
-import com.vijay.countrynews.Presenter.NewsItemPresenterInterface;
-import com.vijay.countrynews.Utils.AppConstants;
-import com.vijay.countrynews.Utils.AppUtils;
-import com.vijay.countrynews.Views.MainContract;
+import com.vijay.countrynews.model.ApiResponse;
+import com.vijay.countrynews.presenter.NewsItemPresenterInterface;
+import com.vijay.countrynews.views.MainContract;
 
 
 import retrofit2.Call;
@@ -23,15 +20,13 @@ import retrofit2.Response;
 public class NewsItemServiceInteractor implements MainContract.NewsItemInteractor {
 
     private static NewsItemPresenterInterface mPresenterItemInterface;
-    Context mContext;
+    IRetrofitApiService retroApiService = RetrofitApiClient.getRetrofitInstance().create(IRetrofitApiService.class);
     static final String TAG = NewsItemServiceInteractor.class.getSimpleName();
     public NewsItemServiceInteractor (NewsItemPresenterInterface iObj){
         mPresenterItemInterface = iObj;
     }
 
     public void getNewsItemFromUrl () {
-
-        IRetrofitApiService retroApiService = RetrofitApiClient.getRetrofitInstance().create(IRetrofitApiService.class);
 
         final Call<ApiResponse> newsFeedCall = retroApiService.doGetNewsFeed();
 

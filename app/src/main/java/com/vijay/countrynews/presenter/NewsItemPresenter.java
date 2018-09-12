@@ -1,9 +1,9 @@
-package com.vijay.countrynews.Presenter;
+package com.vijay.countrynews.presenter;
 
-import com.vijay.countrynews.Model.ApiResponse;
-import com.vijay.countrynews.Model.NewsItems;
-import com.vijay.countrynews.NetworkService.NewsItemServiceInteractor;
-import com.vijay.countrynews.Views.MainContract;
+import com.vijay.countrynews.model.ApiResponse;
+import com.vijay.countrynews.model.NewsItems;
+import com.vijay.countrynews.networkservice.NewsItemServiceInteractor;
+import com.vijay.countrynews.views.MainContract;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,9 +47,16 @@ public class NewsItemPresenter implements NewsItemPresenterInterface {
     @Override
     public void onGetNewsItemSuccess(ApiResponse newsItems) {
         if(mainView != null){
-            mainView.hideProgress();
             List<NewsItems> newsItemList = new ArrayList();
-            mainView.displayNewsItems(newsItems);
+            String newsPageTitle = newsItems.getPageTitle();
+            for (NewsItems item : newsItems.getNewsFeeds()) {
+                if (item.getRowTitle() != null || item.getRowDescription() != null || item.getRowImageUrl() != null) {
+                    newsItemList.add(item);
+                }
+            }
+            newsItems.setNewsFeeds(newsItemList);
+            mainView.setDataToRecyclerView(newsItemList,newsPageTitle);
+            mainView.hideProgress();
 
         }
     }

@@ -1,4 +1,4 @@
-package com.vijay.countrynews.Model;
+package com.vijay.countrynews.model;
 
 import com.google.gson.annotations.SerializedName;
 

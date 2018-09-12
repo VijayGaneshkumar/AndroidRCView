@@ -1,6 +1,6 @@
-package com.vijay.countrynews.Presenter;
+package com.vijay.countrynews.presenter;
 
-import com.vijay.countrynews.Model.ApiResponse;
+import com.vijay.countrynews.model.ApiResponse;
 
 /**
  * Created by vijayganeshkumar on 11/09/18.

@@ -1,4 +1,4 @@
-package com.vijay.countrynews.Utils;
+package com.vijay.countrynews.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

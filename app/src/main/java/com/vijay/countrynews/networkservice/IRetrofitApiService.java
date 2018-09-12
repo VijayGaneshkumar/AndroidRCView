@@ -1,6 +1,6 @@
-package com.vijay.countrynews.NetworkService;
+package com.vijay.countrynews.networkservice;
 
-import com.vijay.countrynews.Model.ApiResponse;
+import com.vijay.countrynews.model.ApiResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
