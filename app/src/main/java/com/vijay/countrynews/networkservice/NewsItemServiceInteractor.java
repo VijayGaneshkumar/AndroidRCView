@@ -19,7 +19,7 @@ import retrofit2.Response;
 
 public class NewsItemServiceInteractor implements MainContract.NewsItemInteractor {
 
-    private static NewsItemPresenterInterface mPresenterItemInterface;
+    NewsItemPresenterInterface mPresenterItemInterface;
     IRetrofitApiService retroApiService = RetrofitApiClient.getRetrofitInstance().create(IRetrofitApiService.class);
     static final String TAG = NewsItemServiceInteractor.class.getSimpleName();
     public NewsItemServiceInteractor (NewsItemPresenterInterface iObj){

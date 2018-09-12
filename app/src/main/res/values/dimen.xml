@@ -14,6 +14,7 @@
 
     <dimen name="newsItemPhoto_height">100dp</dimen>
     <dimen name="newsItemPhoto_width">80dp</dimen>
+    <dimen name="newsItemPhoto_leftpad">5dp</dimen>
 
 
 </resources>
